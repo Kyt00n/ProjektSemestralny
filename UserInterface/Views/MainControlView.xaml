@@ -19,7 +19,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="ToDo List" />
-            <Button Grid.Column="1" Content="New Task" />
+            <Button Grid.Column="1" Content="New Task" Command="{Binding NewTaskCommand}"/>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -27,9 +27,9 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
 
-            <local:Listing Grid.Column="0"/>
-        
-            <local:Descriptions Grid.Column="1" />
+            <local:Listing Grid.Column="0" DataContext="{Binding ListingViewModel}"/>
+
+            <local:Descriptions Grid.Column="1" DataContext="{Binding DescriptionsViewModel}"/>
         </Grid>
 
     </Grid>
