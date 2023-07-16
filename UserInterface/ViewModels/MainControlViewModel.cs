@@ -9,8 +9,8 @@ namespace UserInterface.ViewModels
 {
     public class MainControlViewModel : ViewModelBase
     {
-        public readonly ListingViewModel ListingViewModel { get; }
-        public readonly DescriptionsViewModel DescriptionsViewModel { get; }
+        public ListingViewModel ListingViewModel { get; }
+        public DescriptionsViewModel DescriptionsViewModel { get; }
 
         public ICommand NewTaskCommand { get; }
 
