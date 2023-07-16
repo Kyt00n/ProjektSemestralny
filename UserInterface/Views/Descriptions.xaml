@@ -16,7 +16,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" FontSize="18" Text="Hardcoded Task" />
+                <TextBlock Grid.Row="0" FontSize="18" Text="{Binding Task}" />
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
@@ -24,7 +24,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Text="Description" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Text="Hardcoded Description" />
+                    <TextBlock Grid.Column="1" Text="{Binding DescriptionDisplay}" />
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -33,7 +33,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Text="Priority" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Text="Hardcoded Priority" />
+                    <TextBlock Grid.Column="1" Text="{Binding PriorityDisplay}" />
                 </Grid>
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -42,7 +42,7 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Text="Location" FontWeight="Bold"/>
-                    <TextBlock Grid.Column="1" Text="Hardcoded Location" />
+                    <TextBlock Grid.Column="1" Text="{Binding LocationDisplay}" />
                 </Grid>
             </Grid>
         </Border>

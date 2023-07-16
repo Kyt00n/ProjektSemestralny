@@ -20,7 +20,8 @@
 
                             <TextBlock Text="{Binding Name}"/>
                             <Button Grid.Column="1" Content="Edit" Command="{Binding EditCommand}"/>
-                            <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}/>
+                            <Button Grid.Column="2" Content="Delete" Command="{Binding DeleteCommand}"/>
+                            
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

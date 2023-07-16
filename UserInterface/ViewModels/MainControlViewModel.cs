@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
@@ -14,10 +15,11 @@ namespace UserInterface.ViewModels
 
         public ICommand NewTaskCommand { get; }
 
-        public MainControlViewModel()
+        public MainControlViewModel(SelectedTaskStore selectedTaskStore)
         {
-            ListingViewModel = new ListingViewModel();
-            DescriptionsViewModel = new DescriptionsViewModel();
+            
+            ListingViewModel = new ListingViewModel(selectedTaskStore);
+            DescriptionsViewModel = new DescriptionsViewModel(selectedTaskStore);
         }
     }
 }

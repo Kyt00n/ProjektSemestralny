@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
@@ -11,7 +12,7 @@ namespace UserInterface.ViewModels
     {
         private readonly ObservableCollection<ListingViewItem> _listingViewItems;
         public IEnumerable<ListingViewItem> ListingViewItems => _listingViewItems;
-        public ListingViewModel()
+        public ListingViewModel(SelectedTaskStore selectedTaskStore)
         {
             _listingViewItems = new ObservableCollection<ListingViewItem>
             {
