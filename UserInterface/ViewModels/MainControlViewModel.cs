@@ -16,12 +16,12 @@ namespace UserInterface.ViewModels
 
         public ICommand NewTaskCommand { get; }
 
-        public MainControlViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore)
+        public MainControlViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
         {
             
-            ListingViewModel = new ListingViewModel(selectedTaskStore);
+            ListingViewModel = new ListingViewModel(selectedTaskStore, modalNavigationStore, tasksStore);
             DescriptionsViewModel = new DescriptionsViewModel(selectedTaskStore);
-            NewTaskCommand = new OpenNewTaskCommand(modalNavigationStore);
+            NewTaskCommand = new OpenNewTaskCommand(modalNavigationStore, tasksStore);
         }
     }
 }

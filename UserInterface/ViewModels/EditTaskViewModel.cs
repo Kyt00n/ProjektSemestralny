@@ -15,7 +15,7 @@ namespace UserInterface.ViewModels
         public FormViewModel FormViewModel { get; }
         public EditTaskViewModel(TaskModel taskModel, ModalNavigationStore modalNavigationStore)
         {
-            FormViewModel = new FormViewModel(null, new CloseModalCommand(modalNavigationStore))
+            FormViewModel = new FormViewModel(new EditCommand(modalNavigationStore), new CloseModalCommand(modalNavigationStore))
             {
                 TaskName = taskModel.TaskName,
                 Description = taskModel.TaskDescription,

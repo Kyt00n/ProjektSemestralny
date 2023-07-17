@@ -15,6 +15,9 @@ namespace UserInterface.ViewModels
     {
         private SelectedTaskStore _selectedTaskStore { get; }
         private readonly ObservableCollection<ListingViewItem> _listingViewItems;
+        private readonly ModalNavigationStore modalNavigationStore;
+        private readonly TasksStore tasksStore;
+
         public IEnumerable<ListingViewItem> ListingViewItems => _listingViewItems;
         private ListingViewItem _selectedTaskItemViewModel;
         public ListingViewItem SelectedTaskItemViewModel
@@ -31,16 +34,22 @@ namespace UserInterface.ViewModels
 
         
 
-        public ListingViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore)
+        public ListingViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
         {
             _listingViewItems = new ObservableCollection<ListingViewItem>();
-
-            AddItem(new TaskModel("task1", "Description1", "critical", "salon"), modalNavigationStore);
-            AddItem(new TaskModel("task2", "Description2", "critical", "salon"), modalNavigationStore);
-            AddItem(new TaskModel("task3", "Description3", "critical", "salon"), modalNavigationStore);
+            
             
             _selectedTaskStore = selectedTaskStore;
+            this.modalNavigationStore = modalNavigationStore;
+            this.tasksStore = tasksStore;
+            tasksStore.TaskAdded += TasksStore_TaskAdded;
         }
+
+        private void TasksStore_TaskAdded(TaskModel obj)
+        {
+            AddItem(obj, modalNavigationStore);
+        }
+
         private void AddItem(TaskModel task, ModalNavigationStore modalNavigationStore)
         {
             ICommand editCommand = new OpenEditTaskCommand(task, modalNavigationStore);

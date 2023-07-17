@@ -17,6 +17,7 @@ namespace UserInterface
     {
         private readonly SelectedTaskStore _selectedTaskStore;
         private readonly ModalNavigationStore _modalNavigationStore;
+        private readonly TasksStore _tasksStore;
         public App()
         {
             _selectedTaskStore = new SelectedTaskStore();
@@ -24,7 +25,7 @@ namespace UserInterface
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainControlViewModel mainControlViewModel = new MainControlViewModel(_selectedTaskStore, _modalNavigationStore);
+            MainControlViewModel mainControlViewModel = new MainControlViewModel(_selectedTaskStore, _modalNavigationStore, _tasksStore);
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_modalNavigationStore, mainControlViewModel)

@@ -13,14 +13,17 @@ namespace UserInterface.Commands
     {
         private readonly ModalNavigationStore _modalNavigationStore;
 
-        public OpenNewTaskCommand(ModalNavigationStore modalNavigationStore)
+        public OpenNewTaskCommand(ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
         {
             _modalNavigationStore = modalNavigationStore;
+            TasksStore = tasksStore;
         }
+
+        public TasksStore TasksStore { get; }
 
         public override void Execute(object? parameter)
         {
-            AddNewTaskViewModel addNewTaskViewModel = new AddNewTaskViewModel(_modalNavigationStore);
+            AddNewTaskViewModel addNewTaskViewModel = new AddNewTaskViewModel(_modalNavigationStore, TasksStore);
             _modalNavigationStore.CurrentViewModel = addNewTaskViewModel;
         }
     }

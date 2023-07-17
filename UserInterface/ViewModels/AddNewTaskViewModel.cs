@@ -10,10 +10,13 @@ namespace UserInterface.ViewModels
 {
     public class AddNewTaskViewModel:ViewModelBase
     {
+        private readonly TasksStore tasksStore;
+
         public FormViewModel FormViewModel { get;  }
-        public AddNewTaskViewModel(ModalNavigationStore modalNavigationStore)
+        public AddNewTaskViewModel(ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
         {
-            FormViewModel = new FormViewModel(null, new CloseModalCommand(modalNavigationStore));
+            FormViewModel = new FormViewModel(new SubmitCommand(this, modalNavigationStore, tasksStore), new CloseModalCommand(modalNavigationStore));
+            this.tasksStore = tasksStore;
         }
     }
 }
