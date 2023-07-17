@@ -4,6 +4,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using UserInterface.Commands;
 using UserInterface.Models;
 using UserInterface.Stores;
 
@@ -29,15 +31,20 @@ namespace UserInterface.ViewModels
 
         
 
-        public ListingViewModel(SelectedTaskStore selectedTaskStore)
+        public ListingViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore)
         {
-            _listingViewItems = new ObservableCollection<ListingViewItem>
-            {
-                new ListingViewItem(new TaskModel("task1", "Description1", "critical", "salon")),
-                new ListingViewItem(new TaskModel("task2", "Description2", "critical", "salon")),
-                new ListingViewItem(new TaskModel("task3", "Description3", "critical", "salon"))
-            };
+            _listingViewItems = new ObservableCollection<ListingViewItem>();
+
+            AddItem(new TaskModel("task1", "Description1", "critical", "salon"), modalNavigationStore);
+            AddItem(new TaskModel("task2", "Description2", "critical", "salon"), modalNavigationStore);
+            AddItem(new TaskModel("task3", "Description3", "critical", "salon"), modalNavigationStore);
+            
             _selectedTaskStore = selectedTaskStore;
+        }
+        private void AddItem(TaskModel task, ModalNavigationStore modalNavigationStore)
+        {
+            ICommand editCommand = new OpenEditTaskCommand(task, modalNavigationStore);
+            _listingViewItems.Add(new ListingViewItem(task, editCommand));
         }
     }
 }

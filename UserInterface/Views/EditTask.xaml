@@ -13,6 +13,6 @@
         </Grid.RowDefinitions>
         <TextBlock
             Text="Edit Task"/>
-        <local:Form Grid.Row="1"/>
+        <local:Form Grid.Row="1" DataContext="{Binding FormViewModel}"/>
     </Grid>
 </UserControl>

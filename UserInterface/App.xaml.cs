@@ -24,7 +24,7 @@ namespace UserInterface
         }
         protected override void OnStartup(StartupEventArgs e)
         {
-            MainControlViewModel mainControlViewModel = new MainControlViewModel(_selectedTaskStore);
+            MainControlViewModel mainControlViewModel = new MainControlViewModel(_selectedTaskStore, _modalNavigationStore);
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_modalNavigationStore, mainControlViewModel)

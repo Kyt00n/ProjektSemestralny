@@ -41,6 +41,13 @@ namespace UserInterface.ViewModels
             }
         }
         private string _location;
+
+        public FormViewModel(ICommand submitCommand, ICommand cancelCommand)
+        {
+            SubmitCommand = submitCommand;
+            CancelCommand = cancelCommand;
+        }
+
         public string Location
         {
             get { return _location; }

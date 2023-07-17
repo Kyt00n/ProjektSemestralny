@@ -16,9 +16,10 @@ namespace UserInterface.ViewModels
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public ListingViewItem(TaskModel taskmodel)
+        public ListingViewItem(TaskModel taskmodel, ICommand editCommand)
         {
             this.Taskmodel = taskmodel;
+            EditCommand = editCommand;
         }
     }
 }

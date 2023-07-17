@@ -14,6 +14,6 @@
         <TextBlock
             Text="Add New Task"/>
 
-        <local:Form Grid.Row="1"/>
+        <local:Form Grid.Row="1" DataContext="{Binding FormViewModel}"/>
     </Grid>
 </UserControl>
