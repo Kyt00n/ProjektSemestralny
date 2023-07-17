@@ -16,15 +16,18 @@ namespace UserInterface
     public partial class App : Application
     {
         private readonly SelectedTaskStore _selectedTaskStore;
+        private readonly ModalNavigationStore _modalNavigationStore;
         public App()
         {
             _selectedTaskStore = new SelectedTaskStore();
+            _modalNavigationStore = new ModalNavigationStore();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            MainControlViewModel mainControlViewModel = new MainControlViewModel(_selectedTaskStore);
             MainWindow = new MainWindow()
             {
-                DataContext = new MainControlViewModel(_selectedTaskStore)
+                DataContext = new MainViewModel(_modalNavigationStore, mainControlViewModel)
             };
             MainWindow.Show();
             base.OnStartup(e);

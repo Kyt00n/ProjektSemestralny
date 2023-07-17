@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace UserInterface.ViewModels
 {
@@ -16,6 +17,7 @@ namespace UserInterface.ViewModels
             { 
                 _taskname = value; 
                 OnPropertyChanged(nameof(TaskName));
+                OnPropertyChanged(nameof(CanSubmit));
             }
         }
         private string _description;
@@ -48,6 +50,10 @@ namespace UserInterface.ViewModels
                 OnPropertyChanged(nameof(Location));
             }
         }
-        
+        public bool CanSubmit => !string.IsNullOrEmpty(TaskName);
+        public ICommand SubmitCommand { get; }
+        public ICommand CancelCommand { get; }
+
+
     }
 }

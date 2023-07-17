@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace UserInterface.ViewModels
 {
-    internal class EditTaskViewModel
+    public class EditTaskViewModel:ViewModelBase
     {
+        public FormViewModel FormViewModel { get; }
+        public EditTaskViewModel()
+        {
+            FormViewModel = new FormViewModel();
+        }
     }
 }

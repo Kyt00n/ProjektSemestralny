@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface" xmlns:views="clr-namespace:UserInterface.Views"
+        xmlns:viewmodels="clr-namespace:UserInterface.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewmodels:AddNewTaskViewModel}">
+            <views:AddNewTask Background="White" />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:EditTaskViewModel}">
+            <views:EditTask Background="White"/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        <views:MainControlView />
+
+        <ContentControl Content="{Binding CurrentModalViewModel}" Panel.ZIndex="1" Visibility="{Binding IsModalOpen}"/>
+        <views:MainControlView DataContext="{Binding MainControlViewModel}" />
     </Grid>
 </Window>
