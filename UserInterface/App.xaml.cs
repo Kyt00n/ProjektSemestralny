@@ -1,4 +1,10 @@
-﻿using System;
+﻿using BackEnd.Commands;
+using BackEnd.EntityFramework;
+using BackEnd.EntityFramework.Commands;
+using BackEnd.EntityFramework.Queries;
+using BackEnd.Queries;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -7,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using UserInterface.Stores;
 using UserInterface.ViewModels;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace UserInterface
 {
@@ -15,12 +22,24 @@ namespace UserInterface
     /// </summary>
     public partial class App : Application
     {
+        private readonly TasksDbContextFactory tasksDbContextFactory;
+        private readonly IAddTaskCommand addTaskCommand;
+        private readonly IRemoveTaskCommand removeTaskCommand;
+        private readonly IEditTaskCommand editTaskCommand;
+        private readonly IGetAllTasksQuery query;
         private readonly SelectedTaskStore _selectedTaskStore;
         private readonly ModalNavigationStore _modalNavigationStore;
         private readonly TasksStore _tasksStore;
         public App()
         {
-            _tasksStore = new TasksStore();
+            string _connectionString = "Data Source=ProjektSemestralny.db";
+            _tasksStore = new TasksStore(addTaskCommand, removeTaskCommand, editTaskCommand, query);
+            tasksDbContextFactory = new TasksDbContextFactory(
+                new DbContextOptionsBuilder().UseSqlite(_connectionString).Options);
+            query = new GetAllTasks(tasksDbContextFactory);
+            addTaskCommand = new AddTaskCommand(tasksDbContextFactory);
+            removeTaskCommand = new RemoveTaskCommand(tasksDbContextFactory);
+            editTaskCommand = new EditTaskCommand(tasksDbContextFactory);
             _selectedTaskStore = new SelectedTaskStore(_tasksStore);
             _modalNavigationStore = new ModalNavigationStore();
         }
