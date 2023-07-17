@@ -21,7 +21,7 @@ namespace UserInterface
         public App()
         {
             _tasksStore = new TasksStore();
-            _selectedTaskStore = new SelectedTaskStore();
+            _selectedTaskStore = new SelectedTaskStore(_tasksStore);
             _modalNavigationStore = new ModalNavigationStore();
         }
         protected override void OnStartup(StartupEventArgs e)

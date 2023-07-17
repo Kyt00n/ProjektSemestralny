@@ -9,6 +9,22 @@ namespace UserInterface.Stores
 {
     public class SelectedTaskStore
     {
+        private readonly TasksStore _tasksStore;
+
+        public SelectedTaskStore(TasksStore tasksStore)
+        {
+            _tasksStore = tasksStore;
+            _tasksStore.TaskEdited += _tasksStore_TaskEdited;
+        }
+
+        private void _tasksStore_TaskEdited(TaskModel obj)
+        {
+            if (obj.Id == SelectedTaskModel?.Id)
+            {
+                SelectedTaskModel = obj;
+            }
+        }
+
         private TaskModel _taskModel;
         public TaskModel SelectedTaskModel
         {

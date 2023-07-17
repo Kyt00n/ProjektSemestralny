@@ -25,7 +25,7 @@ namespace UserInterface.Commands
         public override async Task ExecuteAsync(object parameter)
         {
             var formTask = editTaskViewModel.FormViewModel;
-            TaskModel tm = new TaskModel(Guid.NewGuid(), formTask.TaskName, formTask.Description, formTask.Priority, formTask.Location);
+            TaskModel tm = new TaskModel(editTaskViewModel.TaskId, formTask.TaskName, formTask.Description, formTask.Priority, formTask.Location);
             try
             {
                 await ts.Edit(tm);
