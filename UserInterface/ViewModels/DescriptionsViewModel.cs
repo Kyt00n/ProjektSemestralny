@@ -3,21 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UserInterface.Models;
 using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
     public class DescriptionsViewModel : ViewModelBase
     {
-        public string Task => SelectedTaskStore.SelectedTaskModel?.TaskName;
-        public string DescriptionDisplay => SelectedTaskStore.SelectedTaskModel?.TaskDescription;
-        public string PriorityDisplay => SelectedTaskStore.SelectedTaskModel?.TaskPriority;
-        public string LocationDisplay => SelectedTaskStore.SelectedTaskModel?.TaskLocation;
+        public bool HasSelectedTask => SelectedTask != null;
+        public string Task => SelectedTaskStore.SelectedTaskModel?.TaskName ?? "Not Found";
+        public string DescriptionDisplay => SelectedTaskStore.SelectedTaskModel?.TaskDescription ?? "Not Found";
+        public string PriorityDisplay => SelectedTaskStore.SelectedTaskModel?.TaskPriority ?? "Not Found";
+        public string LocationDisplay => SelectedTaskStore.SelectedTaskModel?.TaskLocation ?? "Not Found";
         public SelectedTaskStore SelectedTaskStore { get; }
+        private TaskModel SelectedTask => SelectedTaskStore.SelectedTaskModel;
 
         public DescriptionsViewModel(SelectedTaskStore selectedTaskStore)
         {
             SelectedTaskStore = selectedTaskStore;
+
+            SelectedTaskStore.SelectedTaskChanged += SelectedTaskStore_SelectedTaskChanged;
+        }
+        protected override void Dispose()
+        {
+            SelectedTaskStore.SelectedTaskChanged -= SelectedTaskStore_SelectedTaskChanged;
+        }
+
+        private void SelectedTaskStore_SelectedTaskChanged()
+        {
+            OnPropertyChanged(nameof(Task));
+            OnPropertyChanged(nameof(HasSelectedTask));
+            OnPropertyChanged(nameof(DescriptionDisplay));
+            OnPropertyChanged(nameof(PriorityDisplay));
+            OnPropertyChanged(nameof(LocationDisplay));
         }
     }
 }

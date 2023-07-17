@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Border BorderThickness="1">
-            <ListView ItemsSource="{Binding ListingViewItems}">
+            <ListView SelectedItem="{Binding SelectedTaskItemViewModel}" ItemsSource="{Binding ListingViewItems}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>

@@ -4,18 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using UserInterface.Models;
 
 namespace UserInterface.ViewModels
 {
     public class ListingViewItem:ViewModelBase
     {
-        public string Name { get; }
+        public TaskModel Taskmodel;
+
+        public string Name => Taskmodel.TaskName;
         public ICommand EditCommand { get; }
         public ICommand DeleteCommand { get; }
 
-        public ListingViewItem(string name)
+        public ListingViewItem(TaskModel taskmodel)
         {
-            Name = name;
+            this.Taskmodel = taskmodel;
         }
     }
 }
