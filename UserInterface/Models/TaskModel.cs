@@ -9,13 +9,14 @@ namespace UserInterface.Models
     public class TaskModel
     {
         
-
+        public Guid Id { get; }
         public string TaskName { get; }
         public string TaskDescription { get; }
         public string TaskPriority { get; }
         public string TaskLocation { get; }
-        public TaskModel(string taskName, string taskDescription, string taskPriority, string taskLocation)
+        public TaskModel(Guid id, string taskName, string taskDescription, string taskPriority, string taskLocation)
         {
+            Id = id;
             TaskName = taskName;
             TaskDescription = taskDescription;
             TaskPriority = taskPriority;

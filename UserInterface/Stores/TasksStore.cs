@@ -10,10 +10,15 @@ namespace UserInterface.Stores
     public class TasksStore
     {
         public event Action<TaskModel> TaskAdded;
+        public event Action<TaskModel> TaskEdited;
 
         public async Task Add(TaskModel model)
         {
             TaskAdded?.Invoke(model);
+        }
+        public async Task Edit(TaskModel model)
+        {
+            TaskEdited?.Invoke(model);
         }
     }
 }

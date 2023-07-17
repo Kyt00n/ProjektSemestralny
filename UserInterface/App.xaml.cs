@@ -20,6 +20,7 @@ namespace UserInterface
         private readonly TasksStore _tasksStore;
         public App()
         {
+            _tasksStore = new TasksStore();
             _selectedTaskStore = new SelectedTaskStore();
             _modalNavigationStore = new ModalNavigationStore();
         }

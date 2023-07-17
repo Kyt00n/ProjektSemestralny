@@ -4,13 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using UserInterface.Commands;
 using UserInterface.Models;
+using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
     public class ListingViewItem:ViewModelBase
     {
-        public TaskModel Taskmodel;
+       
+        private TasksStore tasksStore;
+        private ModalNavigationStore modalNavigationStore;
+
+        public TaskModel Taskmodel { get; set; }
 
         public string Name => Taskmodel.TaskName;
         public ICommand EditCommand { get; }
@@ -19,7 +25,21 @@ namespace UserInterface.ViewModels
         public ListingViewItem(TaskModel taskmodel, ICommand editCommand)
         {
             this.Taskmodel = taskmodel;
-            EditCommand = editCommand;
+           
+        }
+
+        public ListingViewItem(TaskModel taskmodel, TasksStore tasksStore, ModalNavigationStore modalNavigationStore)
+        {
+            this.Taskmodel = taskmodel;
+            this.tasksStore = tasksStore;
+            this.modalNavigationStore = modalNavigationStore;
+            EditCommand = new OpenEditTaskCommand(this, tasksStore, modalNavigationStore);
+        }
+
+        public void Edit(TaskModel obj)
+        {
+            Taskmodel = obj;
+            OnPropertyChanged(nameof(Name));
         }
     }
 }

@@ -26,7 +26,7 @@ namespace UserInterface.Commands
         public override async Task ExecuteAsync(object parameter)
         {
             var formTask = addNewTaskViewModel.FormViewModel;
-            TaskModel tm = new TaskModel(formTask.TaskName, formTask.Description, formTask.Priority, formTask.Location);
+            TaskModel tm = new TaskModel(Guid.NewGuid(),formTask.TaskName, formTask.Description, formTask.Priority, formTask.Location);
             try
             {
                 await TasksStore.Add(tm);
