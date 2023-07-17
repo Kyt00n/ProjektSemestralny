@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using UserInterface.Commands;
-using UserInterface.Models;
+using BackEnd.Models;
 using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
