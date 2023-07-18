@@ -7,6 +7,9 @@ using UserInterface.Stores;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Closes Modal(edit and create form page)
+    /// </summary>
     public class CloseModalCommand : CommandBase
     {
         private readonly ModalNavigationStore _modalNavigationStore;

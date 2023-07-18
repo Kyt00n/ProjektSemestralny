@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Models
 {
+    /// <summary>
+    /// Here is a Model for the Task table. It appears in different BackEnd project because both
+    /// WPF layer and Entity Framework Layer need it to function properly.
+    /// </summary>
     public class TaskModel
     {
         

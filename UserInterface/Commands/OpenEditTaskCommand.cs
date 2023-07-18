@@ -9,6 +9,9 @@ using UserInterface.ViewModels;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Opens Modal(edit and create form page)
+    /// </summary>
     public class OpenEditTaskCommand : CommandBase
     {
         private readonly ModalNavigationStore _modalNavigationStore;

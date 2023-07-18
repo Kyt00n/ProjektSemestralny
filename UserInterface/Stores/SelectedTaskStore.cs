@@ -7,6 +7,10 @@ using BackEnd.Models;
 
 namespace UserInterface.Stores
 {
+    /// <summary>
+    /// Keeps track of which task is selected so it can be highlighted and proper Details
+    /// can be visible.
+    /// </summary>
     public class SelectedTaskStore
     {
         private readonly TasksStore _tasksStore;

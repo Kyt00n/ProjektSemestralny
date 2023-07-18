@@ -7,6 +7,9 @@ using UserInterface.Stores;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Read functionality for CRUD application.
+    /// </summary>
     public class LoadTasks : AsyncCommandBase
     {
         private readonly TasksStore _tasksStore;

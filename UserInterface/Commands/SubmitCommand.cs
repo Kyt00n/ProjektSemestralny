@@ -9,6 +9,9 @@ using UserInterface.ViewModels;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Create functionality for CRUD application.
+    /// </summary>
     public class SubmitCommand : AsyncCommandBase
     {
         private readonly AddNewTaskViewModel addNewTaskViewModel;

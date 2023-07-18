@@ -10,6 +10,9 @@ using UserInterface.ViewModels;
 
 namespace UserInterface.ViewModels
 {
+    /// <summary>
+    /// View model for Update functionality of the CRUD app. 
+    /// </summary>
     public class EditTaskViewModel:ViewModelBase
     {
         public Guid TaskId { get; }

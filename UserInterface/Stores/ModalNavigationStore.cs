@@ -7,6 +7,9 @@ using UserInterface.ViewModels;
 
 namespace UserInterface.Stores
 {
+    /// <summary>
+    /// Class that controls if Modal( Edit and Create Form Pages) is open.
+    /// </summary>
     public class ModalNavigationStore
     {
         public bool isOpen => CurrentViewModel != null;

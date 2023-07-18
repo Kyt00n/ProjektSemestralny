@@ -10,6 +10,9 @@ using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
+    /// <summary>
+    /// Listing window used to browse every task in the database. 
+    /// </summary>
     public class ListingViewItem:ViewModelBase
     {
        

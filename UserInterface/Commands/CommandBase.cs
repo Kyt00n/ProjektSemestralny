@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Abstract Class used as a base for every other command(not counting the async ones)
+    /// </summary>
     public abstract class CommandBase : ICommand
     {
         public event EventHandler? CanExecuteChanged;

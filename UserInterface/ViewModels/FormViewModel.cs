@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 namespace UserInterface.ViewModels
 {
+    /// <summary>
+    /// View model for form used in both Editting and Adding new Task. 
+    /// </summary>
     public class FormViewModel : ViewModelBase
     {
         private string _taskname;

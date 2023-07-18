@@ -9,6 +9,9 @@ using UserInterface.ViewModels;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Update functionality for CRUD application.
+    /// </summary>
     public class EditCommand : AsyncCommandBase
     {
         private readonly EditTaskViewModel editTaskViewModel;

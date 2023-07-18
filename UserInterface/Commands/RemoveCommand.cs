@@ -10,6 +10,9 @@ using UserInterface.ViewModels;
 
 namespace UserInterface.Commands
 {
+    /// <summary>
+    /// Delete functionality for CRUD application.
+    /// </summary>
     public class RemoveCommand : AsyncCommandBase
     {
         

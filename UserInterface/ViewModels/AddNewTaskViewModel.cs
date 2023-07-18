@@ -8,6 +8,9 @@ using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
+    /// <summary>
+    /// View model for Create functionality of the CRUD app. 
+    /// </summary>
     public class AddNewTaskViewModel:ViewModelBase
     {
         private readonly TasksStore tasksStore;

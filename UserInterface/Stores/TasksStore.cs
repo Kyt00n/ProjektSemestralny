@@ -9,6 +9,9 @@ using BackEnd.Queries;
 
 namespace UserInterface.Stores
 {
+    /// <summary>
+    /// Store which purpose is only to keep track of the tasks. The most important store in the app.
+    /// </summary>
     public class TasksStore
     {
         private readonly IAddTaskCommand addTaskCommand;

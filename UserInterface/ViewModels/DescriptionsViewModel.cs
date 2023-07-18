@@ -8,6 +8,9 @@ using UserInterface.Stores;
 
 namespace UserInterface.ViewModels
 {
+    /// <summary>
+    /// View model for Description window. Shows more information about selected task. 
+    /// </summary>
     public class DescriptionsViewModel : ViewModelBase
     {
         public bool HasSelectedTask => SelectedTask != null;
