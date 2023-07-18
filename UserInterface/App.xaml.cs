@@ -4,16 +4,9 @@ using BackEnd.EntityFramework.Commands;
 using BackEnd.EntityFramework.Queries;
 using BackEnd.Queries;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using UserInterface.Stores;
 using UserInterface.ViewModels;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace UserInterface
 {

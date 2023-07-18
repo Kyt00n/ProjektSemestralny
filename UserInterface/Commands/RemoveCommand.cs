@@ -1,10 +1,6 @@
 ﻿using BackEnd.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using UserInterface.Commands;
 using UserInterface.Stores;
 using UserInterface.ViewModels;
 

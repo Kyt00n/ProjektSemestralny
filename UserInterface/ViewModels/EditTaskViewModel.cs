@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UserInterface.Commands;
 using BackEnd.Models;
 using UserInterface.Stores;
-using UserInterface.ViewModels;
 
 namespace UserInterface.ViewModels
 {

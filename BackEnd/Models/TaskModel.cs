@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BackEnd.Models
+﻿namespace BackEnd.Models
 {
     /// <summary>
     /// Here is a Model for the Task table. It appears in different BackEnd project because both
