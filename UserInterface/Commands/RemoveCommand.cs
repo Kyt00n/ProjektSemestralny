@@ -1,0 +1,35 @@
+﻿using BackEnd.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UserInterface.Commands;
+using UserInterface.Stores;
+using UserInterface.ViewModels;
+
+namespace UserInterface.Commands
+{
+    public class RemoveCommand : AsyncCommandBase
+    {
+        
+        private ListingViewItem listingViewItem;
+        private TasksStore tasksStore;
+
+        public RemoveCommand(ListingViewItem listingViewItem, TasksStore tasksStore)
+        {
+            this.listingViewItem = listingViewItem;
+            this.tasksStore = tasksStore;
+        }
+
+        public override async Task ExecuteAsync(object parameter)
+        {
+            TaskModel tm = listingViewItem.Taskmodel;
+            try
+            {
+                await tasksStore.Remove(tm.Id);
+            }
+            catch (Exception ex) { }
+        }
+    }
+}

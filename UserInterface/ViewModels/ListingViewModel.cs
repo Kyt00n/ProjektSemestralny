@@ -17,7 +17,7 @@ namespace UserInterface.ViewModels
         private readonly ObservableCollection<ListingViewItem> _listingViewItems;
         private readonly ModalNavigationStore modalNavigationStore;
         private readonly TasksStore tasksStore;
-
+        public ICommand LoadTasksCommand { get; }
         public IEnumerable<ListingViewItem> ListingViewItems => _listingViewItems;
         private ListingViewItem _selectedTaskItemViewModel;
         private TaskModel task;
@@ -39,6 +39,7 @@ namespace UserInterface.ViewModels
         public ListingViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
         {
             _listingViewItems = new ObservableCollection<ListingViewItem>();
+            LoadTasksCommand = new LoadTasks(tasksStore);
             
             
             _selectedTaskStore = selectedTaskStore;
@@ -46,6 +47,33 @@ namespace UserInterface.ViewModels
             this.tasksStore = tasksStore;
             tasksStore.TaskAdded += TasksStore_TaskAdded;
             tasksStore.TaskEdited += TasksStore_TaskEdited;
+            tasksStore.TasksLoaded += TasksStore_TasksLoaded;
+            tasksStore.TaskRemoved += TasksStore_TaskRemoved;
+        }
+
+        private void TasksStore_TaskRemoved(Guid id)
+        {
+            var item = _listingViewItems.FirstOrDefault(x => x.Taskmodel?.Id == id);
+            if (item != null)
+            {
+                _listingViewItems.Remove (item);
+            }
+        }
+
+        public static ListingViewModel LoadViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
+        {
+            ListingViewModel vm = new ListingViewModel(selectedTaskStore, modalNavigationStore, tasksStore);
+            vm.LoadTasksCommand.Execute(null);
+            
+            return vm;
+        }
+        private void TasksStore_TasksLoaded()
+        {
+            _listingViewItems.Clear();
+            foreach(TaskModel task in tasksStore.Tasks)
+            {
+                AddItem(task, modalNavigationStore);
+            }
         }
 
         public ListingViewModel(TaskModel task, TasksStore tasksStore, ModalNavigationStore modalNavigationStore)

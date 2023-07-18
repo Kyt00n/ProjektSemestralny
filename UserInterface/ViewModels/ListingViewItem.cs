@@ -34,6 +34,7 @@ namespace UserInterface.ViewModels
             this.tasksStore = tasksStore;
             this.modalNavigationStore = modalNavigationStore;
             EditCommand = new OpenEditTaskCommand(this, tasksStore, modalNavigationStore);
+            DeleteCommand = new RemoveCommand(this, tasksStore);
         }
 
         public void Edit(TaskModel obj)

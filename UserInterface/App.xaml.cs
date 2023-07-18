@@ -33,18 +33,23 @@ namespace UserInterface
         public App()
         {
             string _connectionString = "Data Source=ProjektSemestralny.db";
-            _tasksStore = new TasksStore(addTaskCommand, removeTaskCommand, editTaskCommand, query);
+            
             tasksDbContextFactory = new TasksDbContextFactory(
                 new DbContextOptionsBuilder().UseSqlite(_connectionString).Options);
             query = new GetAllTasks(tasksDbContextFactory);
             addTaskCommand = new AddTaskCommand(tasksDbContextFactory);
             removeTaskCommand = new RemoveTaskCommand(tasksDbContextFactory);
             editTaskCommand = new EditTaskCommand(tasksDbContextFactory);
+            _tasksStore = new TasksStore(addTaskCommand, removeTaskCommand, editTaskCommand, query);
             _selectedTaskStore = new SelectedTaskStore(_tasksStore);
             _modalNavigationStore = new ModalNavigationStore();
         }
         protected override void OnStartup(StartupEventArgs e)
         {
+            using (TaskDBcontext context = tasksDbContextFactory.Create())
+            {
+                context.Database.Migrate();
+            }
             MainControlViewModel mainControlViewModel = new MainControlViewModel(_selectedTaskStore, _modalNavigationStore, _tasksStore);
             MainWindow = new MainWindow()
             {

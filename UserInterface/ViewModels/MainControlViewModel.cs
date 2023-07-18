@@ -19,7 +19,7 @@ namespace UserInterface.ViewModels
         public MainControlViewModel(SelectedTaskStore selectedTaskStore, ModalNavigationStore modalNavigationStore, TasksStore tasksStore)
         {
             
-            ListingViewModel = new ListingViewModel(selectedTaskStore, modalNavigationStore, tasksStore);
+            ListingViewModel = ListingViewModel.LoadViewModel(selectedTaskStore, modalNavigationStore, tasksStore);
             DescriptionsViewModel = new DescriptionsViewModel(selectedTaskStore);
             NewTaskCommand = new OpenNewTaskCommand(modalNavigationStore, tasksStore);
         }
